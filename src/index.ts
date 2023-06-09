@@ -109,30 +109,30 @@ playground({
 //       HumanMessagePromptTemplate.fromTemplate("{input}"),
 //     ]);
 
-    // Setup the chain with a BufferMemory that pulls from the ConvoStack conversation history
-    const chain = new ConversationChain({
-      memory: new BufferMemory({
-        // Use the ConvoStackLangchainChatMessageHistory class to prepare a Langchain-compatible version of the history
-        chatHistory: new ConvoStackLangchainChatMessageHistory({
-          // Pass the current conversation's message history for loading
-          history: context.getHistory(),
-        }),
-        returnMessages: true,
-        memoryKey: "history",
-      }),
-      prompt: chatPrompt,
-      llm: chat,
-    });
+//     // Setup the chain with a BufferMemory that pulls from the ConvoStack conversation history
+//     const chain = new ConversationChain({
+//       memory: new BufferMemory({
+//         // Use the ConvoStackLangchainChatMessageHistory class to prepare a Langchain-compatible version of the history
+//         chatHistory: new ConvoStackLangchainChatMessageHistory({
+//           // Pass the current conversation's message history for loading
+//           history: context.getHistory(),
+//         }),
+//         returnMessages: true,
+//         memoryKey: "history",
+//       }),
+//       prompt: chatPrompt,
+//       llm: chat,
+//     });
 
-    // `resp` is the response of the OpenAI LLM chain to `humanMessage`, which was inputted on the ConvoStack playground.
-    const resp = await chain.call({
-      input: context.getHumanMessage().content,
-    });
+//     // `resp` is the response of the OpenAI LLM chain to `humanMessage`, which was inputted on the ConvoStack playground.
+//     const resp = await chain.call({
+//       input: context.getHumanMessage().content,
+//     });
 
-    // Send the final response to ConvoStack
-    return {
-      content: resp.response,
-      contentType: "markdown",
-    };
-  },
-});
+//     // Send the final response to ConvoStack
+//     return {
+//       content: resp.response,
+//       contentType: "markdown",
+//     };
+//   },
+// });
